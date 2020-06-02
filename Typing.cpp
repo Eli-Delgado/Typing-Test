@@ -32,31 +32,30 @@ int main() {
 		do {
 			system("cls");
 			presentation();
-			cout << "\n\n Choose amount of words \n";
-			cout << " 1. 10 \n 2. 20 \n 3. 40 \n 4. 60 \n 5. 80 \n 6. 100 \n 7. Exit \n Option: ";
+			cout << "\n\n Menu: \n";
+			cout << " 1. Start Game  \n 2. Exit \n Option: ";
 			cin  >> str;
-		} while(!isInteger(&flag, str) || flag < 1 || flag > 7);
-		//Chooses the level
-		switch(flag) {
-			case 1: amount = 10; break;
-			case 2: amount = 20; break;
-			case 3: amount = 40; break;
-			case 4: amount = 60; break;	
-			case 5: amount = 80; break;
-			case 6: amount = 100; break;
-			case 7: break;
-		}
-		//Start the game
-		if(flag != 7)
+		} while(!isInteger(&flag, str) || flag < 1 || flag > 2);
+		if(flag != 2) {
+			//Chooses amount
+			do {
+				system("cls");
+				presentation();
+				cout << "\n\n Choose amount of words [10 - 100]: ";
+				cin  >> str;
+			} while(!isInteger(&amount, str) || amount < 10 || amount > 100);
+			//Start the game
 			game(amount);
-	}while (flag != 7);
+		}
+		
+	}while (flag != 2);
 	system("cls");
 	cout << "\n\n\n\n\t\t THANKS FOR PLAYING! \n\n\n\n\n";
 	return 0;
 }
 
 int presentation() {
-	cout << "\n\n\t\t English Typing Speed \n";
+	cout << "\n\n\t\t Typing Speed Test\n";
 	cout << "\t Are you fast and accurate enough? \n";
 }
 
@@ -82,7 +81,7 @@ int game(int n) {
 	readWords(words);
 	for(int i = 0; i < n; i++) {
 		//Shows the random words
-		cout <<" \n\n Words left" <<n - i<< "\n\n";
+		cout <<" \n\n Words left " <<n - i<< "\n\n";
 		for(int j = i; j < n; j++) {
 			cout<<" " <<words[index[j]];
 		}
@@ -110,6 +109,7 @@ int game(int n) {
 	}
 	
 	//Here we tell you yout score
+	cout <<"\n\n\t "<<n<<" WORDS TEST ";
 	cout << "\n\n\t YOUR SCORE: ";
 	cout << "\n\n Time =  " <<avgTime;
 	cout << "\n Rigth words = " <<correct;
@@ -152,9 +152,9 @@ void classification(double wpm, double cpm) {
 	} else if((cpm >= 160 || cpm < 260) || (wpm >= 32 || wpm < 52)) {
 		cout<<" Medium typing speed for a person that types with 10 fingers, without looking at the keyboard.";
 	} else if((cpm >= 260 || cpm < 350) || (wpm >= 52 || wpm < 70)) {
-		cout<<" Good typing speed for a person who has complete a blind typing course.";
+		cout<<" Good typing speed for a person who has complete a blind typing course more than once.";
 	} else if((cpm >= 350 || cpm < 400) || (wpm >= 70 || wpm < 80)) {
-		cout<<" High typing speed. A person who has a professional knowledge about typing.  ";
+		cout<<" Professional typing speed. A person who has a professional knowledge about typing.  ";
 	} else {
 		cout<<" Very High typing speed. Near to the speaking speed.";
 	}
