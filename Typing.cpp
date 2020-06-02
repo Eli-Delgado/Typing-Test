@@ -81,8 +81,8 @@ int game(int n) {
 	system("cls");
 	readWords(words);
 	for(int i = 0; i < n; i++) {
-		//Shows the random word
-		cout <<" \n\n Words left " <<n - i<< "\n\n ";
+		//Shows the random words
+		cout <<" \n\n Words left" <<n - i<< "\n\n";
 		for(int j = i; j < n; j++) {
 			cout<<" " <<words[index[j]];
 		}
@@ -105,7 +105,7 @@ int game(int n) {
 		
 		std::chrono::duration<double> elapsed_seconds = end-start;
 		
-		avgTime = avgTime + elapsed_seconds.count();
+		avgTime += elapsed_seconds.count();
 		system("cls");
 	}
 	
