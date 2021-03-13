@@ -74,7 +74,7 @@ int game(int n)
 	getch();
 	fflush(stdin);
 
-	//Selects random indexs for tha words
+	//Selects random indexs for the words
 	for (int i = 0; i < n; i++)
 	{
 		int r = rand() % 100;
